@@ -1,10 +1,13 @@
 # Exp-6-Synchornous-counters - up counter and down counter 
-### AIM: To implement 4 bit up and down counters and validate  functionality.
-### HARDWARE REQUIRED:  – PC, Cyclone II , USB flasher
-### SOFTWARE REQUIRED:   Quartus prime
-### THEORY 
+## AIM:
+ To implement 4 bit up and down counters and validate  functionality.
+## HARDWARE REQUIRED:  
+– PC, Cyclone II , USB flasher
+## SOFTWARE REQUIRED:   
+Quartus prime
+## THEORY 
 
-## UP COUNTER 
+### UP COUNTER 
 The counter is a digital sequential circuit and here it is a 4 bit counter, which simply means it can count from 0 to 15 and vice versa based upon the direction of counting (up/down). 
 
 The counter (“count“) value will be evaluated at every positive (rising) edge of the clock (“clk“) cycle.
@@ -36,7 +39,7 @@ Four-bit “Up” Counter
 
 
 
-## DOWN COUNTER 
+### DOWN COUNTER 
 
 As well as counting “up” from zero and increasing or incrementing to some preset value, it is sometimes necessary to count “down” from a predetermined value to zero allowing us to produce an output that activates when the zero count or some other pre-set value is reached.
 
@@ -51,38 +54,57 @@ This type of counter is normally referred to as a Down Counter, (CTD). In a bina
 
 
 ### PROGRAM 
+```
 /*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
+Developed by: Adhithya.s
+RegisterNumber: 22005823
 */
 
+UP COUNTER:
+module uc(input CLK,input reset,output[0:3]counter);
+reg[0:3]counter_up;
+always@(posedge CLK or posedge reset)
+begin
+if(reset)
+counter_up <=4'd0;
+else
+counter_up <=counter_up+4'd1;
+end
+assign counter = counter_up;
+endmodule
 
-
-
-
+DOWN COUNTER:
+module dc(input clk,input reset,output[0:3]counter);
+reg[0:3] counter_down;
+always@(posedge clk or posedge reset)
+begin
+if(reset)
+counter_down <=4'd0;
+else
+counter_down<=counter_down+4'd1;
+end
+assign counter=counter_down;
+endmodule
+```
 
 ### RTL LOGIC UP COUNTER AND DOWN COUNTER  
-
-
-
-
-
-
-
-
+UP COUNTER:
+![OUTPUT](/upgate.png)
+DOWNCOUNTER:
+![OUTPUT](/downgate.png)
 
 ### TIMING DIGRAMS FOR COUNTER  
-
-
-
-
+UP COUNTER:
+![OUTPUT](/updiagram.png)
+DOWN COUNTER:
+![OUTPUT](/downdiagram.png)
 
 ### TRUTH TABLE 
+UP COUNTER:
+![OUTPUT](/uptruthtable.png)
+DOWN COUNTER:
+![OUTPUT](/downtruthtable.png)
 
-
-
-
-
-
-### RESULTS 
+## RESULTS 
+Thus 4 bit up and down counters is implemented and its functionality is validated
